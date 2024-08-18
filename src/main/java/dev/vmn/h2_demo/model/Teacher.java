@@ -1,6 +1,27 @@
 package dev.vmn.h2_demo.model;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 
-public record Teacher(@Id Integer T_id, String name, String dept) {
+@Entity
+@Transactional
+@Table(name = "Teacher")
+public class Teacher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "teacher_id")
+    Integer teacher_id;
+
+    String name;
+    Integer department_id;
+
+    public Teacher(Integer teacher_id, String name, Integer department_id) {
+        this.department_id = department_id;
+        this.name = name;
+        this.teacher_id = teacher_id;
+    }
+
+    public Teacher(){
+
+    }
 }

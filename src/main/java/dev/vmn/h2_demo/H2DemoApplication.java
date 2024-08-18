@@ -17,7 +17,7 @@ public class H2DemoApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(TeacherRepository teacherRepository){
 		return args -> {
-			teacherRepository.save(new Teacher(null,"Varad", "Computer Science"));
+			teacherRepository.save(new Teacher(1,"Varad", 1));
 		};
 	}
 
