@@ -4,12 +4,16 @@ create table Department (
     primary key (department_id)
 );
 
-create table Teacher(
+create table Teacher (
     teacher_id int,
     name varchar(255),
     department_id int,
     primary key (teacher_id),
     foreign key (department_id) references Department (department_id)
+);
+
+create table Teacher_Department (
+
 );
 
 create table Student (

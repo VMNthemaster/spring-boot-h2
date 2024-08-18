@@ -21,7 +21,5 @@ public class Teacher {
         this.teacher_id = teacher_id;
     }
 
-    public Teacher(){
-
-    }
+    public Teacher(){}
 }

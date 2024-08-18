@@ -1,11 +1,15 @@
 package dev.vmn.h2_demo;
 
-import dev.vmn.h2_demo.model.Teacher;
-import dev.vmn.h2_demo.repository.TeacherRepository;
+import dev.vmn.h2_demo.model.Department;
+import dev.vmn.h2_demo.repository.DepartmentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+// department table will be static
+// create student_department which will have student_id and department_id as columns. populate them using one to one and one to many mappings
+// similarly for teacher_department
 
 @SpringBootApplication
 public class H2DemoApplication {
@@ -15,9 +19,11 @@ public class H2DemoApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(TeacherRepository teacherRepository){
+	CommandLineRunner commandLineRunner(DepartmentRepository departmentRepository){
 		return args -> {
-			teacherRepository.save(new Teacher(1,"Varad", 1));
+			departmentRepository.save(new Department(1,"CS"));
+			departmentRepository.save(new Department(2,"ECE"));
+			departmentRepository.save(new Department(3,"ENTC"));
 		};
 	}
 
