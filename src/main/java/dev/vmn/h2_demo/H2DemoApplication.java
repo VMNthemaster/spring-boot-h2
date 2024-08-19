@@ -7,9 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-// department table will be static
-// create student_department which will have student_id and department_id as columns. populate them using one to one and one to many mappings
-// similarly for teacher_department
 
 @SpringBootApplication
 public class H2DemoApplication {
