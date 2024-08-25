@@ -1,5 +1,6 @@
 package dev.vmn.h2_demo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 
@@ -17,6 +18,7 @@ public class Department {
     private String departmentName;
 
     @OneToMany (mappedBy = "department")
+    @JsonManagedReference
     private List<Student> students;
 
     @OneToMany (mappedBy = "department")
