@@ -11,31 +11,53 @@ import java.util.List;
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "department_id")
-    private Integer department_id;
+    @Column(name = "departmentId")
+    private Integer departmentId;
 
-    private String department_name;
+    private String departmentName;
+
+    @OneToMany (mappedBy = "department")
+    private List<Student> students;
+
+    @OneToMany (mappedBy = "department")
+    private List<Teacher> teachers;
 
     public Department(){}
 
-    public Department(Integer department_id, String department_name) {
-        this.department_id = department_id;
-        this.department_name = department_name;
+    public Department(Integer departmentId, String departmentName) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
     }
 
-    public Integer getDepartment_id() {
-        return department_id;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public String getDepartment_name() {
-        return department_name;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setDepartment_id(Integer department_id) {
-        this.department_id = department_id;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
-    public void setDepartment_name(String department_name) {
-        this.department_name = department_name;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
     }
 }

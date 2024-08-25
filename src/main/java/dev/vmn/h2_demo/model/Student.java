@@ -8,39 +8,40 @@ import jakarta.transaction.Transactional;
 @Table(name = "Student")
 public class Student {
     @Id
-    @Column(name = "student_id")
-    private Integer student_id;
+    @Column(name = "studentId")
+    private Integer studentId;
 
-    private String name;
+    private String studentName;
 
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_student_id")
-    private Student_Department student_department;
+    @ManyToOne
+    @JoinColumn(name = "departmentId")
+    private Department department;
+
 
     public Student(){}
 
-    public Student(Integer student_id, String name, String email) {
-        this.student_id = student_id;
-        this.name = name;
+    public Student(Integer studentId, String name, String email) {
+        this.studentId = studentId;
+        this.studentName = name;
         this.email = email;
     }
 
-    public Integer getStudent_id() {
-        return student_id;
+    public Integer getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(Integer student_id) {
-        this.student_id = student_id;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
     public String getName() {
-        return name;
+        return studentName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.studentName = name;
     }
 
     public String getEmail() {
@@ -51,11 +52,11 @@ public class Student {
         this.email = email;
     }
 
-    public Student_Department getStudent_department() {
-        return student_department;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setStudent_department(Student_Department student_department) {
-        this.student_department = student_department;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
