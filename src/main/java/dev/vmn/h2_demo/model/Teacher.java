@@ -1,5 +1,6 @@
 package dev.vmn.h2_demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 
@@ -16,6 +17,7 @@ public class Teacher {
 
     @ManyToOne
     @JoinColumn(name = "departmentId")
+    @JsonBackReference
     private Department department;
 
     public Teacher(Integer teacherId, String name, String email) {
