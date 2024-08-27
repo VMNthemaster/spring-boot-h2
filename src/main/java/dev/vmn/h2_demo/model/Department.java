@@ -17,11 +17,11 @@ public class Department {
 
     private String departmentName;
 
-    @OneToMany (mappedBy = "department")
+    @OneToMany (mappedBy = "department",cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Student> students;
 
-    @OneToMany (mappedBy = "department")
+    @OneToMany (mappedBy = "department", cascade = CascadeType.ALL)
     private List<Teacher> teachers;
 
     public Department(){}
@@ -61,5 +61,15 @@ public class Department {
 
     public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "departmentId=" + departmentId +
+                ", departmentName='" + departmentName + '\'' +
+                ", students=" + students +
+                ", teachers=" + teachers +
+                '}';
     }
 }
