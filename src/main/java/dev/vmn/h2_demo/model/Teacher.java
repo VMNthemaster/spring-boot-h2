@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 
+import java.util.List;
+
 @Entity
 @Transactional
 @Table(name = "Teacher")
@@ -19,6 +21,15 @@ public class Teacher {
     @JoinColumn(name = "departmentId")
     @JsonBackReference
     private Department department;
+
+//    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+//    @JoinTable(
+//            name = "student_teacher",
+//            joinColumns = @JoinColumn(name = "teacherId"),
+//            inverseJoinColumns = @JoinColumn(name = "studentId")
+//    )
+    @ManyToMany(mappedBy = "teachers")
+    List<Student> students;
 
     public Teacher(Integer teacherId, String name, String email) {
         this.teacherId = teacherId;
@@ -58,5 +69,13 @@ public class Teacher {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        this.students.remove(student);
     }
 }
